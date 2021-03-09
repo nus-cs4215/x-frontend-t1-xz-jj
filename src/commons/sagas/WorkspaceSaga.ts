@@ -35,6 +35,10 @@ import {
 } from '../workspace/WorkspaceTypes';
 import { safeTakeEvery as takeEvery } from './SafeEffects';
 
+// TODO:
+// declare let pyodide:any; 
+// can apply here directly also
+
 let breakpoints: string[] = [];
 export default function* WorkspaceSaga(): SagaIterator {
   let context: Context;
@@ -294,12 +298,20 @@ export function* evalCode(
   // }
 
   function call_variant(variant: Variant) {
+    console.log('code passed to frontend: ');
+    console.log(code);
     if (variant === 'calc') {
-      return call(runInContext, code, context, {
+
+      const result = call(runInContext, code, context, {
         scheduler: 'preemptive',
         originalMaxExecTime: execTime,
         stepLimit: stepLimit
       });
+
+      console.log('result passed to frontend: ');
+      console.log(result);
+
+      return result;
     } else {
       throw new Error('Unknown variant: ' + variant);
     }
