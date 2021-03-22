@@ -3,6 +3,8 @@ import { Ace, require as acequire } from 'ace-builds';
 import 'ace-builds/src-noconflict/ext-language_tools';
 import 'ace-builds/src-noconflict/ext-searchbox';
 import 'x-slang/dist/editors/ace/theme/source';
+import 'ace-builds/src-noconflict/mode-python';
+import 'ace-builds/src-noconflict/theme-terminal';
 
 import { Variant } from 'x-slang/dist/types';
 import * as React from 'react';
@@ -213,7 +215,7 @@ const EditorBase = React.memo(
     // this used to be in useMemo, but selectMode now checks if the mode is
     // already defined and doesn't do it, so it is now OK to keep calling this
     // unconditionally.
-    selectMode(sourceVariant);
+    // selectMode(sourceVariant);
 
     React.useLayoutEffect(() => {
       if (!reactAceRef.current) {
@@ -235,9 +237,11 @@ const EditorBase = React.memo(
       session.on('changeAnnotation' as any, makeHandleAnnotationChange(session));
 
       // Start autocompletion
-      acequire('ace/ext/language_tools').setCompleters([
-        makeCompleter((...args) => handlePromptAutocompleteRef.current(...args))
-      ]);
+      // acequire('ace/ext/language_tools').setCompleters([
+      //   makeCompleter((...args) => handlePromptAutocompleteRef.current(...args))
+      // ]);
+      
+      acequire("ace/ext/language_tools");
       // This should run exactly once.
     }, []);
 
@@ -270,13 +274,15 @@ const EditorBase = React.memo(
       fontSize: 17,
       height: '100%',
       highlightActiveLine: false,
-      mode: getModeString(sourceVariant),
-      theme: 'source',
+      // mode: getModeString(sourceVariant),
+      mode : 'python',
+      // theme: 'source',
+      theme: 'terminal',
       value: props.editorValue,
       width: '100%',
       setOptions: {
         enableBasicAutocompletion: true,
-        enableLiveAutocompletion: true,
+        // enableLiveAutocompletion: true,
         fontFamily: "'Inconsolata', 'Consolas', monospace"
       }
     };

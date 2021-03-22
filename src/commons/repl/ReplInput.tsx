@@ -65,8 +65,10 @@ class ReplInput extends React.PureComponent<ReplInputProps, {}> {
       <>
         <AceEditor
           className="repl-react-ace react-ace"
-          mode={getModeString(this.props.sourceVariant)}
-          theme="source"
+          // mode={getModeString(this.props.sourceVariant)}
+          mode="python"
+          theme="terminal"
+          // theme="source"
           height="1px"
           width="100%"
           value={this.props.replValue}
