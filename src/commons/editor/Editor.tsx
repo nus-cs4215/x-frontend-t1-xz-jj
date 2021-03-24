@@ -24,8 +24,8 @@ import useNavigation from './UseNavigation';
 import useRefactor from './UseRefactor';
 import useShareAce from './UseShareAce';
 import useTypeInference from './UseTypeInference';
-import { getModeString, selectMode } from '../utils/AceHelper';
-import Constants from '../utils/Constants';
+// import { getModeString, selectMode } from '../utils/AceHelper';
+// import Constants from '../utils/Constants';
 
 export type EditorKeyBindingHandlers = { [name in KeyFunction]?: () => void };
 export type EditorHook = (
@@ -161,24 +161,24 @@ const makeHandleAnnotationChange = (session: Ace.EditSession) => () => {
   }
 };
 
-const makeCompleter = (handlePromptAutocomplete: DispatchProps['handlePromptAutocomplete']) => ({
-  getCompletions: (
-    editor: Ace.Editor,
-    session: Ace.EditSession,
-    pos: Ace.Point,
-    prefix: string,
-    callback: () => void
-  ) => {
-    // Don't prompt if prefix starts with number
-    if (prefix && /\d/.test(prefix.charAt(0))) {
-      callback();
-      return;
-    }
+// const makeCompleter = (handlePromptAutocomplete: DispatchProps['handlePromptAutocomplete']) => ({
+//   getCompletions: (
+//     editor: Ace.Editor,
+//     session: Ace.EditSession,
+//     pos: Ace.Point,
+//     prefix: string,
+//     callback: () => void
+//   ) => {
+//     // Don't prompt if prefix starts with number
+//     if (prefix && /\d/.test(prefix.charAt(0))) {
+//       callback();
+//       return;
+//     }
 
-    // Cursor col is insertion location i.e. last char col + 1
-    handlePromptAutocomplete(pos.row + 1, pos.column, callback);
-  }
-});
+//     // Cursor col is insertion location i.e. last char col + 1
+//     handlePromptAutocomplete(pos.row + 1, pos.column, callback);
+//   }
+// });
 
 const moveCursor = (editor: AceEditor['editor'], position: Position) => {
   editor.selection.clearSelection();
@@ -205,7 +205,7 @@ const EditorBase = React.memo(
       handlePromptAutocompleteRef.current = props.handlePromptAutocomplete;
     }, [props.handleEditorUpdateBreakpoints, props.handlePromptAutocomplete]);
 
-    const sourceVariant = props.sourceVariant || Constants.defaultSourceVariant;
+    // const sourceVariant = props.sourceVariant || Constants.defaultSourceVariant;
 
     // this function defines the Ace language and highlighting mode for the
     // given combination of variant and external library. it CANNOT be

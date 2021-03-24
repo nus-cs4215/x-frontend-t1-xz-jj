@@ -2,7 +2,7 @@ import * as React from 'react';
 import AceEditor from 'react-ace';
 import { Variant } from 'x-slang/dist/types';
 
-import { getModeString, selectMode } from '../utils/AceHelper';
+// import { getModeString, selectMode } from '../utils/AceHelper';
 // source mode and chapter imported in Editor.tsx
 
 export type ReplInputProps = DispatchProps & StateProps;
@@ -59,7 +59,7 @@ class ReplInput extends React.PureComponent<ReplInputProps, {}> {
 
   public render() {
     // see the comment above this same call in Editor.tsx
-    selectMode(this.props.sourceVariant);
+    // selectMode(this.props.sourceVariant);
 
     return (
       <>
