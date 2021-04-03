@@ -110,7 +110,11 @@ const renderResult = (value: any) => {
   if (typeof ShapeDrawn !== 'undefined' && value instanceof ShapeDrawn) {
     return <SideContentCanvasOutput canvas={value.$canvas} />;
   } else {
-    return stringify(value);
+    console.log("renderResult:");
+    console.log(value);
+    // return stringify(value);
+    // TODO: differentiate console and return value
+    return value;
   }
 };
 
