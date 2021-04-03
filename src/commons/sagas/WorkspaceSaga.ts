@@ -300,7 +300,7 @@ export function* evalCode(
   function call_variant(variant: Variant) {
     console.log('code passed to frontend: ');
     console.log(code);
-    if (variant === 'calc') {
+    if (variant === 'calc' || variant === 'sicpy') {
 
       const result = call(runInContext, code, context, {
         scheduler: 'preemptive',
