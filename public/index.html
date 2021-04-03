@@ -11,27 +11,9 @@
   <script type="text/javascript" src="https://apis.google.com/js/client.js"></script>
   <script type="text/javascript">
     // set the Pyodide files URL (packages.json, pyodide.asm.data etc)
-    // window.languagePluginUrl = 'https://cdn.jsdelivr.net/pyodide/v0.16.1/full/';
+    window.languagePluginUrl = 'https://cdn.jsdelivr.net/pyodide/v0.16.1/full/';
   </script>
-  <!-- <script src="https://cdn.jsdelivr.net/pyodide/v0.16.1/full/pyodide.js"></script> -->
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0a2/full/pyodide.js"></script>
-  <script type="text/javascript">
-    async function main(){
-      await loadPyodide({
-        indexURL : "https://cdn.jsdelivr.net/pyodide/v0.17.0a2/full/"
-      });
-      console.log(pyodide.runPython(`
-          import sys
-          sys.version
-      `));
-      await pyodide.runPythonAsync(`
-        import micropip
-        await micropip.install('ast2json')
-        from ast2json import ast2json
-      `);
-    }
-    main();
-  </script>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.16.1/full/pyodide.js"></script>
   <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
@@ -56,6 +38,7 @@
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
+
   <div id="root"></div>
   <!--
       This HTML file is a template.
