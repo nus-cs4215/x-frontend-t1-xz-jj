@@ -94,15 +94,24 @@ export type SourceLanguage = {
 };
 
 const variantDisplay: Map<Variant, string> = new Map([
-  ['calc', 'Calculator'], 
-  ['sicpy','SICPy']
+  // ['calc', 'Calculator'], 
+  ['0','0'],
+  ['1','1'],
+  ['2','2'],
+  ['3','3'],
 ]);
 
 export const styliseSublanguage = (variant: Variant = Constants.defaultSourceVariant) => {
-  return `Source \xa7${variantDisplay.has(variant) ? ` ${variantDisplay.get(variant)}` : ''}`;
+  return `SICPy \xa7${variantDisplay.has(variant) ? ` ${variantDisplay.get(variant)}` : ''}`;
 };
 
-const sublanguages: { variant: Variant }[] = [{ variant: 'calc' }, { variant: 'sicpy'}];
+const sublanguages: { variant: Variant }[] = [
+  // { variant: 'calc' }, 
+  { variant: '0'},
+  { variant: '1'},
+  { variant: '2'},
+  { variant: '3'}
+];
 
 export const sourceLanguages = sublanguages.map(sublang => {
   return {

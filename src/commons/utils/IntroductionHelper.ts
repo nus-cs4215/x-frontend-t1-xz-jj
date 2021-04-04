@@ -17,8 +17,16 @@ and also the [_Source Academy keyboard shortcuts_](${Links.sourceHotkeys}).
 
 const generateSourceDocsLink = (sourceType: string) => {
   switch (sourceType) {
-    case 'calc':
-      return `You have chosen the sublanguage [_Source ${CHAP}0_] Calculator mode.`;
+    // case 'calc':
+    //   return `You have chosen the sublanguage [_Source ${CHAP}0_] Calculator mode.`;
+    case '0':
+      return `You have chosen the sublanguage [_SICPy ${CHAP}0_].`;
+    case '1':
+      return `You have chosen the sublanguage [_SICPy ${CHAP}1_].`;
+    case '2':
+      return `You have chosen the sublanguage [_SICPy ${CHAP}2_].`;
+    case '3':
+      return `You have chosen the sublanguage [_SICPy ${CHAP}3_].`;
     default:
       return 'You have chosen an invalid sublanguage. Please pick a sublanguage from the dropdown instead.';
   }

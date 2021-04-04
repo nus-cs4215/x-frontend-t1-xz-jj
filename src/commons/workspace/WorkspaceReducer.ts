@@ -24,6 +24,7 @@ import { SET_EDITOR_SESSION_ID, SET_SHAREDB_CONNECTED } from '../collabEditing/C
 import { NOTIFY_PROGRAM_EVALUATED } from '../sideContent/SideContentTypes';
 import { SourceActionType } from '../utils/ActionsHelper';
 import Constants from '../utils/Constants';
+import { createContext } from '../utils/XSlangHelper';
 import {
   BROWSE_REPL_HISTORY_DOWN,
   BROWSE_REPL_HISTORY_UP,
@@ -35,6 +36,7 @@ import {
   CLEAR_REPL_INPUT,
   CLEAR_REPL_OUTPUT,
   CLEAR_REPL_OUTPUT_LAST,
+  END_CLEAR_CONTEXT,
   EVAL_EDITOR,
   EVAL_REPL,
   MOVE_CURSOR,
@@ -243,6 +245,18 @@ export const WorkspaceReducer: Reducer<WorkspaceManagerState> = (
           output: []
         }
       };
+    case END_CLEAR_CONTEXT:
+        return {
+          ...state,
+          [workspaceLocation]: {
+            ...state[workspaceLocation],
+            context: createContext<WorkspaceLocation>(
+              [],
+              workspaceLocation,
+              action.payload.variant,
+            ),
+          }
+        };
     case SEND_REPL_INPUT_TO_OUTPUT:
       // CodeOutput properties exist in parallel with workspaceLocation
       newOutput = state[workspaceLocation].output.concat(action.payload as CodeOutput);

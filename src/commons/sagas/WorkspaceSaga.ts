@@ -35,10 +35,6 @@ import {
 } from '../workspace/WorkspaceTypes';
 import { safeTakeEvery as takeEvery } from './SafeEffects';
 
-// TODO:
-// declare let pyodide:any; 
-// can apply here directly also
-
 let breakpoints: string[] = [];
 export default function* WorkspaceSaga(): SagaIterator {
   let context: Context;
@@ -204,9 +200,10 @@ export default function* WorkspaceSaga(): SagaIterator {
     ]);
     const oldVariant = result[0];
     if (newVariant !== oldVariant) {
-      // yield put(actions.beginClearContext(workspaceLocation, false));
+      console.log("new variant: " + newVariant);
       yield put(actions.clearReplOutput(workspaceLocation));
       yield put(actions.debuggerReset(workspaceLocation));
+      yield put(actions.endClearContext(newVariant, workspaceLocation));
       yield call(showSuccessMessage, `Switched to ${styliseSublanguage(newVariant)}`, 1000);
     }
   });
@@ -298,9 +295,12 @@ export function* evalCode(
   // }
 
   function call_variant(variant: Variant) {
+    console.log('=== VARIANT ===');
+    console.log(variant);
+
     console.log('code passed to frontend: ');
     console.log(code);
-    if (variant === 'calc' || variant === 'sicpy') {
+    // if (variant === 'calc' || variant === 'sicpy') {
 
       const result = call(runInContext, code, context, {
         scheduler: 'preemptive',
@@ -312,9 +312,9 @@ export function* evalCode(
       console.log(result);
 
       return result;
-    } else {
-      throw new Error('Unknown variant: ' + variant);
-    }
+    // } else {
+    //   throw new Error('Unknown variant: ' + variant);
+    // }
   }
 
   const { result } = yield race({
