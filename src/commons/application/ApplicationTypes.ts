@@ -99,6 +99,7 @@ const variantDisplay: Map<Variant, string> = new Map([
   ['1','1'],
   ['2','2'],
   ['3','3'],
+  ['4','4'],
 ]);
 
 export const styliseSublanguage = (variant: Variant = Constants.defaultSourceVariant) => {
@@ -110,7 +111,8 @@ const sublanguages: { variant: Variant }[] = [
   { variant: '0'},
   { variant: '1'},
   { variant: '2'},
-  { variant: '3'}
+  { variant: '3'},
+  { variant: '4'},
 ];
 
 export const sourceLanguages = sublanguages.map(sublang => {
