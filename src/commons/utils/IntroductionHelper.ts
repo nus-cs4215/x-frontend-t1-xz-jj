@@ -27,6 +27,8 @@ const generateSourceDocsLink = (sourceType: string) => {
       return `You have chosen the sublanguage [_SICPy ${CHAP}2_].`;
     case '3':
       return `You have chosen the sublanguage [_SICPy ${CHAP}3_].`;
+    case '4':
+      return `You have chosen the sublanguage [_SICPy ${CHAP}3_].`;
     default:
       return 'You have chosen an invalid sublanguage. Please pick a sublanguage from the dropdown instead.';
   }
