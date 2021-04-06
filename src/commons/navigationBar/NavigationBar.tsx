@@ -25,7 +25,7 @@ const NavigationBar: React.SFC<NavigationBarProps> = props => (
         to="/playground"
       >
         <Icon icon={IconNames.CODE} />
-        <div className="navbar-button-text hidden-xs">{'Source Academy Playground'}</div>
+        <div className="navbar-button-text hidden-xs">{'SICPy Academy Playground'}</div>
       </NavLink>
       {props.role && (
         <NavLink

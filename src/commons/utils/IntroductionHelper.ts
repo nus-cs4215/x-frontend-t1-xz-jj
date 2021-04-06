@@ -3,15 +3,15 @@ import { Links } from './Constants';
 const CHAP = '\xa7';
 
 const MAIN_INTRODUCTION = `
-Welcome to the Source Academy playground!
+Welcome to the SICPy Academy playground!
 
-The language [_Source_](${Links.sourceDocs}) is the official language of the textbook [_Structure and
+The language [_SICPy_](${Links.sourceDocs}) is the unofficial language of the textbook [_Structure and
 Interpretation of Computer Programs, JavaScript Adaptation_](${Links.textbook}). `;
 
 const HOTKEYS_INTRODUCTION = `
 
 In the editor on the left, you can use the [_Ace keyboard shortcuts_](${Links.aceHotkeys}) 
-and also the [_Source Academy keyboard shortcuts_](${Links.sourceHotkeys}).
+and also the [_SICPy Academy keyboard shortcuts_](${Links.sourceHotkeys}).
 
 `;
 
